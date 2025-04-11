@@ -1,11 +1,11 @@
 #pragma once
 
 // pixels (utilisés par SFML) en mètres (unité de Box2D), 30 pixels = 1 mètre
-constexpr int SCALE = 30;
+constexpr float SCALE = 30.f;
 
 // Window
-constexpr int WINDOW_WIDTH = 800;
-constexpr int WINDOW_HEIGHT = 600;
+constexpr float WINDOW_WIDTH = 1500.f;
+constexpr float WINDOW_HEIGHT = 900.f;
 
 
 

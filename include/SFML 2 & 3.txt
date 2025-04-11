@@ -1,0 +1,1 @@
+y a deux dossiers ici pour sfml, pour les versions 2.6.2 et 3.0.0, la lib sfml active se doit de s'appeler 'SFML'. Renommer les versions pour passer de l'une à l'autre
