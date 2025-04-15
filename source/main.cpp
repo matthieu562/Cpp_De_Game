@@ -14,8 +14,10 @@ int main() {
     walls.emplace_back(world, WINDOW_WIDTH - WALL_THICKNESS / 2, WINDOW_HEIGHT / 2, WALL_THICKNESS, WINDOW_HEIGHT); // right
     walls.emplace_back(world, WALL_THICKNESS / 2, WINDOW_HEIGHT / 2, WALL_THICKNESS, WINDOW_HEIGHT); // left
 
-    Circle cercle(world, 20.f, { 400.f, 100.f });
-
+    std::vector<Circle> circles;
+    for(int i = 0; i < 20; i++)
+        circles.emplace_back(world, 20.f);
+        
     while(window.isOpen()) {
         sf::Event event;
         while(window.pollEvent(event)) {
@@ -26,11 +28,20 @@ int main() {
         world.Step(1.f / FPS, 8, 3);
 
         window.clear();
-        cercle.applyControl();
+
+        for(Circle& circle : circles)
+        {
+            //circle.updateVision(world, circles);
+
+            if(circle.m_instanceID == 0)
+                circle.applyControl();
+            else
+                circle.applyControl(circle.botControl(window));
+            circle.draw(window);
+        }
 
         for(const Wall& wall : walls)
             wall.draw(window);
-        cercle.draw(window);
         window.setFramerateLimit((unsigned int)FPS);
         window.display();
     }
